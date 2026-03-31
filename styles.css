@@ -242,7 +242,7 @@ body.login-locked{
   to{transform:rotate(360deg)}
 }
 
-/* APP LAYOUT */
+/* APP */
 
 .app-shell{
   position:relative;
@@ -471,7 +471,9 @@ body.login-locked{
   font-weight:700;
 }
 
-.panel h2{
+.panel h2,
+.hero-panel h2,
+.products-panel h2{
   margin:0;
   font-size:2rem;
   line-height:1.15;
@@ -848,10 +850,6 @@ body.login-locked{
 @media (max-width: 1180px){
   .dashboard-wrap{
     grid-template-columns:1fr;
-  }
-
-  .mini-metrics{
-    grid-template-columns:1fr 1fr 1fr;
   }
 }
 
