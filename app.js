@@ -1,275 +1,124 @@
 let PORTAL_DATA = null;
+let clickCount = 0;
 
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbzURBsi3CRDfAxBgxwgWWVWrKxcyvHCHzn5QtzpSvBZS7SbJGQFbBh66iMVc3GErB6xNQ/exec'
+  API_URL: 'COLE_AQUI_SUA_API'
 };
+
+const ADMIN_PASSWORD = 'admin123';
 
 function initializeLoginScreen() {
   document.body.classList.add('login-locked');
-
-  const overlay = document.getElementById('loginOverlay');
-  if (overlay) overlay.style.display = 'flex';
-
-  const userInput = document.getElementById('loginUser');
-  if (userInput) {
-    setTimeout(() => userInput.focus(), 250);
-  }
-}
-
-function togglePasswordVisibility() {
-  const input = document.getElementById('loginPassword');
-  const button = document.getElementById('togglePasswordBtn');
-
-  if (!input || !button) return;
-
-  if (input.type === 'password') {
-    input.type = 'text';
-    button.textContent = '🙈';
-  } else {
-    input.type = 'password';
-    button.textContent = '👁';
-  }
-}
-
-function showLoginError(message) {
-  const error = document.getElementById('loginError');
-  if (!error) return;
-
-  error.textContent = message;
-  error.classList.add('show');
-}
-
-function clearLoginError() {
-  const error = document.getElementById('loginError');
-  if (!error) return;
-
-  error.textContent = '';
-  error.classList.remove('show');
-}
-
-function setLoginLoading(isLoading) {
-  const button = document.getElementById('loginButton');
-  const text = document.getElementById('loginButtonText');
-  const user = document.getElementById('loginUser');
-  const pass = document.getElementById('loginPassword');
-
-  if (!button || !text) return;
-
-  if (isLoading) {
-    button.classList.add('loading');
-    text.textContent = 'Validando acesso';
-    if (user) user.disabled = true;
-    if (pass) pass.disabled = true;
-  } else {
-    button.classList.remove('loading');
-    text.textContent = 'Login';
-    if (user) user.disabled = false;
-    if (pass) pass.disabled = false;
-  }
+  document.getElementById('loginOverlay').style.display = 'flex';
 }
 
 function validateLogin() {
-  const username = (document.getElementById('loginUser')?.value || '').trim();
-  const password = document.getElementById('loginPassword')?.value || '';
+  const u = document.getElementById('loginUser').value;
+  const p = document.getElementById('loginPassword').value;
 
-  clearLoginError();
+  if (!PORTAL_DATA) return alert('Carregando...');
 
-  if (!username || !password) {
-    showLoginError('Preencha usuário e senha.');
-    return;
+  if (u === PORTAL_DATA.loginUsername && p === PORTAL_DATA.loginPassword) {
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.body.classList.remove('login-locked');
+    document.getElementById('appShell').classList.remove('hidden');
+  } else {
+    alert('Login inválido');
   }
-
-  if (!PORTAL_DATA) {
-    showLoginError('Os dados do portal ainda não foram carregados.');
-    return;
-  }
-
-  setLoginLoading(true);
-
-  setTimeout(() => {
-    if (
-      username === PORTAL_DATA.loginUsername &&
-      password === PORTAL_DATA.loginPassword
-    ) {
-      document.getElementById('loginOverlay').style.display = 'none';
-      document.body.classList.remove('login-locked');
-      document.getElementById('appShell').classList.remove('hidden');
-      setLoginLoading(false);
-      showToast('Bem-vindo(a) ao portal executivo.');
-    } else {
-      setLoginLoading(false);
-      showLoginError('Usuário ou senha incorretos.');
-    }
-  }, 700);
 }
 
 function renderPortal(data) {
   PORTAL_DATA = data;
 
-  document.getElementById('pageTitle').textContent =
-    data.appTitle || 'Portal Executivo | Relatório Geral';
+  document.getElementById('reportName').textContent = data.report.name;
+  document.getElementById('updateDate').textContent = data.lastUpdate.date;
+  document.getElementById('updateTime').textContent = data.lastUpdate.time;
 
-  document.getElementById('pageSubtitle').textContent =
-    data.appSubtitle || 'Consulta externa segura e visualização estratégica do relatório.';
-
-  document.getElementById('reportName').textContent =
-    data.report?.name || 'Relatório Geral';
-
-  document.getElementById('updateDate').textContent =
-    data.lastUpdate?.date || '--/--/----';
-
-  document.getElementById('updateTime').textContent =
-    data.lastUpdate?.time || '--:--';
-
-  document.getElementById('headerUpdate').textContent =
-    `${data.lastUpdate?.date || '--/--/----'} • ${data.lastUpdate?.time || '--:--'}`;
-
-  configureReportButtons(data.report || {});
-  renderRecentProducts(data.recentProducts || []);
+  renderProducts(data.recentProducts);
 }
 
-function configureReportButtons(report) {
-  const viewBtn = document.getElementById('viewReportBtn');
-  const downloadBtn = document.getElementById('downloadReportBtn');
-  const hint = document.getElementById('reportHint');
+function renderProducts(list) {
+  const el = document.getElementById('recentProductsList');
 
-  const hasUrl = !!(report && report.url && String(report.url).trim());
-
-  if (!hasUrl) {
-    viewBtn.classList.add('btn-disabled');
-    downloadBtn.classList.add('btn-disabled');
-    hint.textContent = 'Nenhum link de relatório configurado no momento.';
-    return;
-  }
-
-  viewBtn.classList.remove('btn-disabled');
-  downloadBtn.classList.remove('btn-disabled');
-  hint.textContent = 'Relatório disponível para visualização e download.';
-}
-
-function renderRecentProducts(items) {
-  const list = document.getElementById('recentProductsList');
-  if (!list) return;
-
-  if (!items.length) {
-    list.innerHTML = `
-      <div class="product-item">
-        <div class="product-main">
-          <strong>Nenhum novo produto informado</strong>
-          <span>Não há itens recentes para exibir no momento.</span>
-        </div>
-      </div>
-    `;
-    return;
-  }
-
-  list.innerHTML = items.map(item => `
+  el.innerHTML = list.map(p => `
     <div class="product-item">
-      <div class="product-main">
-        <strong>${escapeHtml(item.modelo || '-')}</strong>
-        <span>${escapeHtml(item.categoria || '-')}</span>
+      <div>
+        <strong>${p.modelo}</strong>
+        <span>${p.categoria}</span>
       </div>
-      <div class="product-date">${escapeHtml(item.data || '-')}</div>
+      <div>${p.data}</div>
     </div>
   `).join('');
 }
 
 function openReport() {
-  const url = PORTAL_DATA?.report?.url;
+  if (!PORTAL_DATA.report.url) return alert('Sem PDF');
+  window.open(PORTAL_DATA.report.url);
+}
 
-  if (!url) {
-    showToast('Nenhum link de relatório configurado.');
-    return;
+/* ================= ADMIN ================= */
+
+function secretClick() {
+  clickCount++;
+  if (clickCount >= 5) {
+    openAdmin();
+    clickCount = 0;
   }
 
-  window.open(url, '_blank');
+  setTimeout(() => clickCount = 0, 2000);
 }
 
-function downloadReport() {
-  const url = PORTAL_DATA?.report?.url;
+function openAdmin() {
+  const pass = prompt('Senha admin:');
+  if (pass !== ADMIN_PASSWORD) return;
 
-  if (!url) {
-    showToast('Nenhum link de relatório configurado.');
-    return;
-  }
+  document.getElementById('adminModal').style.display = 'flex';
 
-  window.open(url, '_blank');
+  document.getElementById('adminPdf').value = PORTAL_DATA.report.url;
+  document.getElementById('adminDate').value = PORTAL_DATA.lastUpdate.date;
+  document.getElementById('adminTime').value = PORTAL_DATA.lastUpdate.time;
 }
 
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
+function saveAdmin() {
+  PORTAL_DATA.report.url = document.getElementById('adminPdf').value;
+  PORTAL_DATA.lastUpdate.date = document.getElementById('adminDate').value;
+  PORTAL_DATA.lastUpdate.time = document.getElementById('adminTime').value;
 
-  toast.textContent = message;
-  toast.classList.add('show');
+  localStorage.setItem('portalData', JSON.stringify(PORTAL_DATA));
 
-  clearTimeout(showToast._timer);
-  showToast._timer = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2800);
+  renderPortal(PORTAL_DATA);
+
+  closeAdmin();
+  alert('Atualizado!');
 }
 
-function escapeHtml(value) {
-  return String(value ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+function closeAdmin() {
+  document.getElementById('adminModal').style.display = 'none';
 }
+
+/* ================= API ================= */
 
 function loadPortal() {
+  const saved = localStorage.getItem('portalData');
+
+  if (saved) {
+    renderPortal(JSON.parse(saved));
+    return;
+  }
+
   fetch(CONFIG.API_URL)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-      return response.text();
-    })
+    .then(res => res.text())
     .then(text => {
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch (e) {
-        console.error('Resposta recebida:', text);
-        throw new Error('A API não retornou JSON válido.');
-      }
+      const data = JSON.parse(text);
       renderPortal(data);
     })
-    .catch(err => {
-      console.error(err);
-      showToast('Erro ao conectar com API.');
-    });
+    .catch(() => alert('Erro API'));
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   initializeLoginScreen();
-  document.getElementById('appShell').classList.add('hidden');
   loadPortal();
 
-  const loginButton = document.getElementById('loginButton');
-  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
-  const loginUser = document.getElementById('loginUser');
-  const loginPassword = document.getElementById('loginPassword');
-
-  if (loginButton) loginButton.addEventListener('click', validateLogin);
-  if (togglePasswordBtn) togglePasswordBtn.addEventListener('click', togglePasswordVisibility);
-
-  if (loginUser) {
-    loginUser.addEventListener('input', clearLoginError);
-    loginUser.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        loginPassword?.focus();
-      }
-    });
-  }
-
-  if (loginPassword) {
-    loginPassword.addEventListener('input', clearLoginError);
-    loginPassword.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        validateLogin();
-      }
-    });
-  }
+  document.getElementById('motorolaTitle')
+    .addEventListener('click', secretClick);
 });
