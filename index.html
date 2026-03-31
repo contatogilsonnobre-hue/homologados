@@ -68,7 +68,7 @@
     <header class="topbar">
       <div>
         <div class="eyebrow">Motorola • Lenovo Company</div>
-        <h1 id="pageTitle">Portal Executivo | Relatório Geral</h1>
+        <h1 id="motorolaTitle" class="secret-trigger">Motorola</h1>
         <p id="pageSubtitle">Consulta externa segura e visualização estratégica do relatório.</p>
       </div>
 
@@ -133,6 +133,47 @@
         <div id="recentProductsList" class="products-list"></div>
       </section>
     </main>
+  </div>
+
+  <div id="adminModal" class="admin-modal">
+    <div class="admin-card">
+      <h2>Modo Administrativo</h2>
+      <p class="admin-subtitle">
+        Atualize o link do PDF, a data, a hora e os itens recentes do portal.
+      </p>
+
+      <div class="admin-grid">
+        <div class="admin-field">
+          <label for="adminPdf">Link do PDF</label>
+          <input id="adminPdf" type="text" placeholder="Cole aqui o link do relatório em PDF">
+        </div>
+
+        <div class="admin-row">
+          <div class="admin-field">
+            <label for="adminDate">Data</label>
+            <input id="adminDate" type="text" placeholder="30/03/2026">
+          </div>
+
+          <div class="admin-field">
+            <label for="adminTime">Hora</label>
+            <input id="adminTime" type="text" placeholder="22:45">
+          </div>
+        </div>
+
+        <div class="admin-field">
+          <label for="adminProducts">Últimos produtos</label>
+          <textarea id="adminProducts" placeholder="Use 1 linha por item no formato:&#10;XT2605-3 | Celular | 28/03/2026&#10;XT1234-1 | Bateria | 27/03/2026"></textarea>
+          <div class="admin-help">
+            Formato sugerido: <strong>Modelo | Categoria | Data</strong>, um por linha.
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-secondary" type="button" onclick="closeAdmin()">Fechar</button>
+        <button class="btn btn-primary" type="button" onclick="saveAdmin()">Salvar alterações</button>
+      </div>
+    </div>
   </div>
 
   <div id="toast" class="toast"></div>
