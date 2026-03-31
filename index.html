@@ -65,64 +65,119 @@
   </div>
 
   <div id="appShell" class="app-shell hidden">
-    <header class="topbar">
-      <div>
-        <div class="eyebrow">Motorola • Lenovo Company</div>
-        <h1 id="motorolaTitle" class="secret-trigger">Motorola</h1>
-        <p id="pageSubtitle">Consulta externa segura e visualização estratégica do relatório.</p>
+    <aside class="sidebar-rail" aria-hidden="true">
+      <div class="sidebar-brand">M</div>
+      <div class="sidebar-nav">
+        <div class="sidebar-icon active">⌂</div>
+        <div class="sidebar-icon">◫</div>
+        <div class="sidebar-icon">⌕</div>
+        <div class="sidebar-dot"></div>
       </div>
+      <div class="sidebar-icon">✦</div>
+    </aside>
 
-      <div class="header-badge">
-        <span class="badge-dot"></span>
-        <span id="headerUpdate">--/--/---- • --:--</span>
-      </div>
-    </header>
-
-    <main class="dashboard-grid">
-      <section class="panel panel-large">
-        <div class="panel-header">
-          <div>
-            <div class="panel-label">Relatório principal</div>
-            <h2 id="reportName">Relatório Geral</h2>
-          </div>
-          <div class="panel-chip">Executivo</div>
+    <div class="shell-grid">
+      <header class="topbar">
+        <div class="hero-copy">
+          <div class="eyebrow">Motorola • Lenovo Company</div>
+          <h1 id="motorolaTitle" class="secret-trigger">Motorola</h1>
+          <p id="pageSubtitle">Consulta externa segura e visualização estratégica do relatório.</p>
         </div>
 
-        <p class="panel-text">
-          Visualização controlada do relatório oficial disponibilizado para consulta externa.
-        </p>
+        <div class="header-badge">
+          <span class="badge-dot"></span>
+          <span id="headerUpdate">--/--/---- • --:--</span>
+        </div>
+      </header>
 
-        <div class="report-actions">
-          <button class="btn btn-primary" id="viewReportBtn" type="button">Visualizar</button>
-          <button class="btn btn-secondary" id="downloadReportBtn" type="button">Baixar</button>
+      <section class="dashboard-wrap">
+        <div class="left-stack">
+          <section class="hero-panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-label">Relatório principal</div>
+                <h2 id="reportName">Relatório Geral</h2>
+              </div>
+              <div class="panel-chip">Executivo</div>
+            </div>
+
+            <p class="panel-text">
+              Visualização controlada do relatório oficial disponibilizado para consulta externa.
+            </p>
+
+            <div class="report-actions">
+              <button class="btn btn-primary" id="viewReportBtn" type="button">Visualizar</button>
+              <button class="btn btn-secondary" id="downloadReportBtn" type="button">Baixar</button>
+            </div>
+
+            <div id="reportHint" class="report-hint">
+              Nenhum link de relatório configurado no momento.
+            </div>
+          </section>
+
+          <section class="mini-metrics">
+            <div class="metric-card blue">
+              <span>Documento</span>
+              <strong>PDF</strong>
+              <small>Disponível para consulta externa</small>
+            </div>
+
+            <div class="metric-card warm">
+              <span>Status</span>
+              <strong>Online</strong>
+              <small>Portal ativo e sincronizado</small>
+            </div>
+
+            <div class="metric-card">
+              <span>Ambiente</span>
+              <strong>Flex</strong>
+              <small>Visual executivo protegido</small>
+            </div>
+          </section>
         </div>
 
-        <div id="reportHint" class="report-hint">
-          Nenhum link de relatório configurado no momento.
+        <div class="right-stack">
+          <section class="panel side-panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-label">Atualização</div>
+                <h2>Última atualização</h2>
+              </div>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-card">
+                <span>Data</span>
+                <strong id="updateDate">--/--/----</strong>
+              </div>
+              <div class="info-card">
+                <span>Hora</span>
+                <strong id="updateTime">--:--</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel small-card">
+            <div class="panel-header">
+              <div>
+                <div class="panel-label">Ambiente</div>
+                <h2>Monitoramento</h2>
+              </div>
+            </div>
+
+            <div class="small-status">
+              <span class="dot"></span>
+              Visualização executiva ativa
+            </div>
+
+            <p>
+              Acompanhe rapidamente o relatório oficial, a data de atualização e os últimos itens adicionados.
+            </p>
+          </section>
         </div>
       </section>
 
-      <section class="panel">
-        <div class="panel-header">
-          <div>
-            <div class="panel-label">Atualização</div>
-            <h2>Última atualização</h2>
-          </div>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <span>Data</span>
-            <strong id="updateDate">--/--/----</strong>
-          </div>
-          <div class="info-card">
-            <span>Hora</span>
-            <strong id="updateTime">--:--</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel full-width">
+      <section class="products-panel">
         <div class="panel-header">
           <div>
             <div class="panel-label">Novos produtos</div>
@@ -132,7 +187,7 @@
 
         <div id="recentProductsList" class="products-list"></div>
       </section>
-    </main>
+    </div>
   </div>
 
   <div id="adminModal" class="admin-modal">
