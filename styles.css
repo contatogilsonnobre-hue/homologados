@@ -20,9 +20,9 @@
   --danger:#f87171;
   --shadow:0 24px 80px rgba(0,0,0,.42);
   --shadow-soft:0 14px 36px rgba(0,0,0,.24);
-  --radius:28px;
-  --radius-sm:18px;
-  --sidebar-w:84px;
+  --radius:24px;
+  --radius-sm:16px;
+  --sidebar-w:72px;
 }
 
 *{box-sizing:border-box}
@@ -130,7 +130,7 @@ body.login-locked{
 .login-input-group{
   display:flex;
   align-items:center;
-  min-height:46px;
+  min-height:40px;
   border-radius:999px;
   background:rgba(2,6,23,0.34);
   border:1px solid rgba(59,130,246,0.20);
@@ -151,7 +151,7 @@ body.login-locked{
 
 .login-input{
   flex:1;
-  height:46px;
+  height:40px;
   border:0;
   outline:none;
   background:transparent;
@@ -247,18 +247,18 @@ body.login-locked{
 .app-shell{
   position:relative;
   min-height:100vh;
-  max-width:1520px;
+  max-width:1500px;
   margin:0 auto;
-  padding:22px 24px 28px calc(var(--sidebar-w) + 34px);
+  padding:16px 20px 22px calc(var(--sidebar-w) + 26px);
 }
 
 .sidebar-rail{
   position:fixed;
-  left:22px;
+  left:20px;
   top:22px;
   bottom:22px;
   width:var(--sidebar-w);
-  border-radius:26px;
+  border-radius:24px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
   border:1px solid rgba(255,255,255,.08);
@@ -270,18 +270,18 @@ body.login-locked{
   flex-direction:column;
   align-items:center;
   justify-content:space-between;
-  padding:16px 0;
+  padding:14px 0;
   z-index:30;
 }
 
 .sidebar-brand{
-  width:46px;
-  height:46px;
+  width:40px;
+  height:40px;
   border-radius:16px;
   display:grid;
   place-items:center;
   color:#fff;
-  font-size:20px;
+  font-size:18px;
   font-weight:700;
   background:
     linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.03)),
@@ -313,7 +313,7 @@ body.login-locked{
   color:var(--muted);
   border:1px solid rgba(255,255,255,.06);
   background:rgba(255,255,255,.03);
-  font-size:15px;
+  font-size:14px;
 }
 
 .sidebar-icon.active{
@@ -324,7 +324,7 @@ body.login-locked{
 
 .shell-grid{
   display:grid;
-  gap:20px;
+  gap:12px;
 }
 
 .topbar{
@@ -360,7 +360,7 @@ body.login-locked{
   color:var(--muted);
   max-width:760px;
   line-height:1.6;
-  font-size:1.03rem;
+  font-size:.92rem;
 }
 
 .secret-trigger{
@@ -376,7 +376,7 @@ body.login-locked{
   display:inline-flex;
   align-items:center;
   gap:10px;
-  padding:14px 18px;
+  padding:13px 16px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.09);
   background:
@@ -396,20 +396,20 @@ body.login-locked{
 
 .dashboard-wrap{
   display:grid;
-  grid-template-columns:1.48fr .86fr;
-  gap:20px;
+  grid-template-columns:1.42fr .84fr;
+  gap:12px;
 }
 
 .left-stack,
 .right-stack{
   display:grid;
-  gap:20px;
+  gap:12px;
 }
 
 .hero-panel{
-  min-height:360px;
-  padding:26px;
-  border-radius:30px;
+  min-height:238px;
+  padding:20px;
+  border-radius:24px;
   background:
     radial-gradient(circle at 80% 18%, rgba(239,143,66,.18), transparent 24%),
     linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
@@ -435,8 +435,8 @@ body.login-locked{
   position:absolute;
   right:-30px;
   top:-30px;
-  width:280px;
-  height:280px;
+  width:220px;
+  height:220px;
   border-radius:50%;
   background:radial-gradient(circle, rgba(239,143,66,.15), rgba(239,143,66,0) 72%);
   filter:blur(12px);
@@ -444,7 +444,7 @@ body.login-locked{
 }
 
 .panel{
-  padding:24px;
+  padding:20px;
   border-radius:var(--radius);
   background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));
   border:1px solid var(--line);
@@ -475,7 +475,7 @@ body.login-locked{
 .hero-panel h2,
 .products-panel h2{
   margin:0;
-  font-size:2rem;
+  font-size:1.1rem;
   line-height:1.15;
   color:#fff;
   letter-spacing:-.02em;
@@ -483,7 +483,7 @@ body.login-locked{
 
 .panel-chip{
   font-size:12px;
-  padding:10px 14px;
+  padding:8px 12px;
   border-radius:999px;
   background:rgba(110,166,255,.16);
   color:#e6f0ff;
@@ -496,7 +496,7 @@ body.login-locked{
   margin:0 0 26px;
   color:var(--muted);
   line-height:1.75;
-  font-size:1.02rem;
+  font-size:.9rem;
   max-width:92%;
   position:relative;
   z-index:1;
@@ -514,7 +514,7 @@ body.login-locked{
 .btn{
   border:none;
   border-radius:18px;
-  padding:15px 20px;
+  padding:12px 17px;
   font-weight:650;
   cursor:pointer;
   transition:.18s ease;
@@ -543,9 +543,9 @@ body.login-locked{
 }
 
 .report-hint{
-  font-size:13px;
+  font-size:12px;
   color:var(--muted);
-  padding:13px 14px;
+  padding:11px 13px;
   border-radius:16px;
   background:rgba(255,255,255,.03);
   border:1px dashed rgba(255,255,255,.10);
@@ -556,17 +556,17 @@ body.login-locked{
 .mini-metrics{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:14px;
+  gap:12px;
 }
 
 .metric-card{
-  padding:16px 16px 14px;
+  padding:14px 16px 13px;
   border-radius:20px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
   border:1px solid rgba(255,255,255,.08);
   box-shadow:var(--shadow-soft);
-  min-height:104px;
+  min-height:88px;
 }
 
 .metric-card.warm{
@@ -593,7 +593,7 @@ body.login-locked{
 .metric-card strong{
   display:block;
   color:#fff;
-  font-size:1.6rem;
+  font-size:1.1rem;
   line-height:1;
   margin-bottom:8px;
 }
@@ -605,25 +605,25 @@ body.login-locked{
 
 .side-grid{
   display:grid;
-  gap:20px;
+  gap:12px;
 }
 
 .side-panel{
-  min-height:170px;
+  min-height:148px;
 }
 
 .info-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:12px;
 }
 
 .info-card{
-  border-radius:22px;
+  border-radius:18px;
   background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
   border:1px solid var(--line);
-  padding:18px;
-  min-height:96px;
+  padding:15px;
+  min-height:84px;
 }
 
 .info-card span{
@@ -635,12 +635,12 @@ body.login-locked{
 
 .info-card strong{
   color:#fff;
-  font-size:2rem;
+  font-size:1.1rem;
   letter-spacing:-.02em;
 }
 
 .small-card{
-  min-height:144px;
+  min-height:126px;
 }
 
 .small-card p{
@@ -653,9 +653,9 @@ body.login-locked{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:10px 12px;
+  padding:8px 11px;
   border-radius:999px;
-  font-size:13px;
+  font-size:12px;
   font-weight:600;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
@@ -671,8 +671,8 @@ body.login-locked{
 }
 
 .products-panel{
-  padding:24px;
-  border-radius:30px;
+  padding:20px;
+  border-radius:24px;
   background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));
   border:1px solid var(--line);
   box-shadow:var(--shadow);
@@ -681,7 +681,7 @@ body.login-locked{
 
 .products-list{
   display:grid;
-  gap:14px;
+  gap:12px;
   margin-top:18px;
 }
 
@@ -690,8 +690,8 @@ body.login-locked{
   justify-content:space-between;
   align-items:center;
   gap:16px;
-  padding:18px 18px;
-  border-radius:22px;
+  padding:14px 16px;
+  border-radius:18px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
   border:1px solid rgba(255,255,255,.08);
@@ -706,7 +706,7 @@ body.login-locked{
 
 .product-main strong{
   color:#fff;
-  font-size:1.15rem;
+  font-size:1rem;
   letter-spacing:-.01em;
 }
 
@@ -718,7 +718,7 @@ body.login-locked{
 .product-date{
   white-space:nowrap;
   color:#dce9ff;
-  font-size:15px;
+  font-size:14px;
   font-weight:600;
 }
 
@@ -728,7 +728,7 @@ body.login-locked{
   bottom:20px;
   background:rgba(15,23,42,.95);
   color:#fff;
-  padding:14px 18px;
+  padding:13px 16px;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.08);
   box-shadow:var(--shadow-soft);
@@ -760,8 +760,8 @@ body.login-locked{
 
 .admin-card{
   width:min(92vw, 560px);
-  border-radius:26px;
-  padding:26px;
+  border-radius:24px;
+  padding:20px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
   border:1px solid rgba(255,255,255,.10);
@@ -785,7 +785,7 @@ body.login-locked{
 
 .admin-grid{
   display:grid;
-  gap:14px;
+  gap:12px;
 }
 
 .admin-field{
@@ -808,7 +808,7 @@ body.login-locked{
   border:1px solid rgba(255,255,255,.10);
   outline:none;
   border-radius:16px;
-  padding:13px 14px;
+  padding:11px 13px;
   background:rgba(2,6,23,.42);
   color:#f8fafc;
   font:inherit;
@@ -830,7 +830,7 @@ body.login-locked{
 .admin-row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:12px;
 }
 
 .admin-help{
@@ -901,17 +901,17 @@ body.login-locked{
   .hero-panel,
   .panel,
   .products-panel{
-    padding:18px;
-    border-radius:22px;
+    padding:15px;
+    border-radius:18px;
   }
 
   .topbar h1{
-    font-size:2rem;
+    font-size:1.1rem;
   }
 
   .admin-card{
     padding:20px;
-    border-radius:22px;
+    border-radius:18px;
   }
 
   .admin-row{
@@ -926,3 +926,36 @@ body.login-locked{
     width:100%;
   }
 }
+
+.admin-auth-modal,
+.admin-modal{
+  position:fixed; inset:0; z-index:10001; display:none; align-items:center; justify-content:center;
+  padding:20px; background:rgba(2,6,23,.72); backdrop-filter:blur(12px);
+}
+.admin-auth-card{
+  width:min(92vw,430px); border-radius:24px; padding:20px;
+  background:radial-gradient(circle at 80% 0%, rgba(110,166,255,.12), transparent 28%),
+             linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 24px 70px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.admin-auth-dot{
+  width:10px; height:10px; border-radius:50%;
+  background:radial-gradient(circle, #60a5fa 0%, #2563eb 65%, rgba(37,99,235,0.25) 100%);
+  box-shadow:0 0 18px rgba(59,130,246,0.55); margin-bottom:14px;
+}
+.admin-auth-card h2{ margin:0 0 8px; font-size:1.35rem; color:var(--text-strong); }
+.admin-auth-card p{ margin:0 0 16px; color:var(--muted); line-height:1.55; font-size:.92rem; }
+.admin-auth-input-wrap{
+  display:flex; align-items:center; min-height:48px; border-radius:16px;
+  background:rgba(2,6,23,.42); border:1px solid rgba(255,255,255,.10); overflow:hidden;
+}
+.admin-auth-input-wrap:focus-within{ border-color:rgba(96,165,250,0.55); box-shadow:0 0 0 3px rgba(59,130,246,0.08); }
+.admin-auth-input-wrap input{
+  flex:1; height:48px; border:0; outline:none; background:transparent; color:#f8fafc; padding:0 14px; font:inherit;
+}
+.admin-auth-input-wrap input::placeholder{ color:rgba(148,163,184,0.70); }
+.admin-auth-toggle{ width:48px; height:48px; border:0; background:transparent; color:rgba(96,165,250,0.95); cursor:pointer; }
+.admin-auth-error{ min-height:18px; margin-top:8px; color:var(--danger); font-size:.78rem; opacity:0; transition:.2s ease; }
+.admin-auth-error.show{ opacity:1; }
+.admin-auth-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:18px; }
