@@ -256,17 +256,23 @@ function openAdmin() {
 function saveAdmin() {
   if (!PORTAL_DATA) return;
 
-  PORTAL_DATA.report = PORTAL_DATA.report || {};
-  PORTAL_DATA.lastUpdate = PORTAL_DATA.lastUpdate || {};
-  PORTAL_DATA.report.url = document.getElementById('adminPdf').value.trim() || '';
-  PORTAL_DATA.lastUpdate.date = document.getElementById('adminDate').value.trim() || '';
-  PORTAL_DATA.lastUpdate.time = document.getElementById('adminTime').value.trim() || '';
-  PORTAL_DATA.recentProducts = textareaToProducts(document.getElementById('adminProducts').value || '');
+  PORTAL_DATA.report.url = document.getElementById('adminPdf').value.trim();
+  PORTAL_DATA.lastUpdate.date = document.getElementById('adminDate').value.trim();
+  PORTAL_DATA.lastUpdate.time = document.getElementById('adminTime').value.trim();
+  PORTAL_DATA.recentProducts = textareaToProducts(document.getElementById('adminProducts').value);
 
-  localStorage.setItem('portalData', JSON.stringify(PORTAL_DATA));
-  renderPortal(PORTAL_DATA);
-  closeAdmin();
-  showToast('Alterações salvas com Sucesso.');
+  fetch(CONFIG.API_URL, {
+    method: 'POST',
+    body: JSON.stringify(PORTAL_DATA)
+  })
+  .then(() => {
+    renderPortal(PORTAL_DATA);
+    closeAdmin();
+    showToast('Atualizado com sucesso (global).');
+  })
+  .catch(() => {
+    showToast('Erro ao salvar na API.');
+  });
 }
 
 function closeAdmin() {
