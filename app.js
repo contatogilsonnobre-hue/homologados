@@ -3,7 +3,7 @@ let clickCount = 0;
 let clickTimer = null;
 
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbz5w8JASPWk-_yP3_vNNX4OBR0Ury33at8dAt2D8MvKwHz09KP8aH3g28mU--m03gcQqQ/exec'
+  API_URL: 'https://script.google.com/macros/s/AKfycbwgITmxOhOpoumv-bTSlh5FHg8MEX6NzPtWks4yZBA4eQZSU6oIsocWihHC8xBT9Nwn/exec'
 };
 
 const ADMIN_PASSWORD = 'admin123';
