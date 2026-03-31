@@ -9,72 +9,41 @@
 <body>
   <div id="loginOverlay" class="login-overlay">
     <div class="login-bg-glow"></div>
-
     <div class="login-card" id="loginCard">
       <div class="login-header">
         <div class="login-logo-dot"></div>
         <h1>Motorola</h1>
-        <p>
-          Login de Acesso | Consulta controlada do relatório geral para parceiros externos.
-        </p>
+        <p>Login de Acesso | Consulta controlada do relatório geral para parceiros externos.</p>
       </div>
-
       <div class="login-form">
         <div class="login-input-group">
           <span class="login-input-icon">👤</span>
-          <input
-            type="text"
-            id="loginUser"
-            class="login-input"
-            placeholder="Digite seu usuário"
-            autocomplete="off"
-          >
+          <input type="text" id="loginUser" class="login-input" placeholder="Digite seu usuário" autocomplete="off">
         </div>
-
         <div class="login-input-group">
           <span class="login-input-icon">🔑</span>
-          <input
-            type="password"
-            id="loginPassword"
-            class="login-input"
-            placeholder="Digite sua senha"
-            autocomplete="off"
-          >
-          <button
-            type="button"
-            class="toggle-password"
-            id="togglePasswordBtn"
-            aria-label="Mostrar senha"
-          >
-            👁
-          </button>
+          <input type="password" id="loginPassword" class="login-input" placeholder="Digite sua senha" autocomplete="off">
+          <button type="button" class="toggle-password" id="togglePasswordBtn" aria-label="Mostrar senha">👁</button>
         </div>
-
         <div id="loginError" class="login-error"></div>
-
         <button id="loginButton" class="login-button" type="button">
           <span id="loginButtonText">Login</span>
           <span id="loginSpinner" class="login-spinner"></span>
         </button>
       </div>
-
-      <div class="login-footer">
-        <span>Ambiente Executivo • Acesso Restrito</span>
-      </div>
+      <div class="login-footer"><span>Ambiente Executivo • Acesso Restrito</span></div>
     </div>
   </div>
 
   <div id="appShell" class="app-shell hidden">
     <aside class="sidebar-rail" aria-hidden="true">
       <div class="sidebar-brand">M</div>
-
       <div class="sidebar-nav">
         <div class="sidebar-icon active">⌂</div>
         <div class="sidebar-icon">◫</div>
         <div class="sidebar-icon">⌕</div>
         <div class="sidebar-dot"></div>
       </div>
-
       <div class="sidebar-icon">✦</div>
     </aside>
 
@@ -85,7 +54,6 @@
           <h1 id="motorolaTitle" class="secret-trigger">Motorola</h1>
           <p id="pageSubtitle">Consulta externa segura e visualização estratégica do relatório.</p>
         </div>
-
         <div class="header-badge">
           <span class="badge-dot"></span>
           <span id="headerUpdate">--/--/---- • --:--</span>
@@ -102,19 +70,12 @@
               </div>
               <div class="panel-chip">Executivo</div>
             </div>
-
-            <p class="panel-text">
-              Visualização controlada do relatório oficial disponibilizado para consulta externa.
-            </p>
-
+            <p class="panel-text">Visualização controlada do relatório oficial disponibilizado para consulta externa.</p>
             <div class="report-actions">
               <button class="btn btn-primary" id="viewReportBtn" type="button">Visualizar</button>
               <button class="btn btn-secondary" id="downloadReportBtn" type="button">Baixar</button>
             </div>
-
-            <div id="reportHint" class="report-hint">
-              Nenhum link de relatório configurado no momento.
-            </div>
+            <div id="reportHint" class="report-hint">Nenhum link de relatório configurado no momento.</div>
           </section>
 
           <section class="mini-metrics">
@@ -123,13 +84,11 @@
               <strong>PDF</strong>
               <small>Disponível para consulta externa</small>
             </div>
-
             <div class="metric-card warm">
               <span>Status</span>
               <strong>Online</strong>
               <small>Portal ativo e sincronizado</small>
             </div>
-
             <div class="metric-card">
               <span>Ambiente</span>
               <strong>Flex</strong>
@@ -146,7 +105,6 @@
                 <h2>Última atualização</h2>
               </div>
             </div>
-
             <div class="info-grid">
               <div class="info-card">
                 <span>Data</span>
@@ -166,15 +124,8 @@
                 <h2>Monitoramento</h2>
               </div>
             </div>
-
-            <div class="small-status">
-              <span class="dot"></span>
-              Visualização executiva ativa
-            </div>
-
-            <p>
-              Acompanhe rapidamente o relatório oficial, a data de atualização e os últimos itens adicionados.
-            </p>
+            <div class="small-status"><span class="dot"></span>Visualização executiva ativa</div>
+            <p>Acompanhe rapidamente o relatório oficial, a data de atualização e os últimos itens adicionados.</p>
           </section>
         </div>
       </section>
@@ -186,46 +137,53 @@
             <h2>Últimos itens inseridos</h2>
           </div>
         </div>
-
         <div id="recentProductsList" class="products-list"></div>
       </section>
+    </div>
+  </div>
+
+  <div id="adminAuthModal" class="admin-auth-modal">
+    <div class="admin-auth-card">
+      <div class="admin-auth-dot"></div>
+      <h2>Acesso administrativo</h2>
+      <p>Digite sua senha para abrir o painel de administração.</p>
+      <div class="admin-auth-input-wrap">
+        <input id="adminPasswordInput" type="password" placeholder="Senha administrativa" autocomplete="off">
+        <button type="button" id="adminPasswordToggle" class="admin-auth-toggle" aria-label="Mostrar senha">👁</button>
+      </div>
+      <div id="adminAuthError" class="admin-auth-error"></div>
+      <div class="admin-auth-actions">
+        <button class="btn btn-secondary" type="button" id="adminAuthCancelBtn">Cancelar</button>
+        <button class="btn btn-primary" type="button" id="adminAuthConfirmBtn">Entrar</button>
+      </div>
     </div>
   </div>
 
   <div id="adminModal" class="admin-modal">
     <div class="admin-card">
       <h2>Modo Administrativo</h2>
-      <p class="admin-subtitle">
-        Atualize o link do PDF, a data, a hora e os itens recentes do portal.
-      </p>
-
+      <p class="admin-subtitle">Atualize o link do PDF, a data, a hora e os itens recentes do portal.</p>
       <div class="admin-grid">
         <div class="admin-field">
           <label for="adminPdf">Link do PDF</label>
           <input id="adminPdf" type="text" placeholder="Cole aqui o link do relatório em PDF">
         </div>
-
         <div class="admin-row">
           <div class="admin-field">
             <label for="adminDate">Data</label>
             <input id="adminDate" type="text" placeholder="30/03/2026">
           </div>
-
           <div class="admin-field">
             <label for="adminTime">Hora</label>
             <input id="adminTime" type="text" placeholder="22:45">
           </div>
         </div>
-
         <div class="admin-field">
           <label for="adminProducts">Últimos produtos</label>
           <textarea id="adminProducts" placeholder="Use 1 linha por item no formato:&#10;XT2605-3 | Celular | 28/03/2026&#10;XT1234-1 | Bateria | 27/03/2026"></textarea>
-          <div class="admin-help">
-            Formato sugerido: <strong>Modelo | Categoria | Data</strong>, um por linha.
-          </div>
+          <div class="admin-help">Formato sugerido: <strong>Modelo | Categoria | Data</strong>, um por linha.</div>
         </div>
       </div>
-
       <div class="admin-actions">
         <button class="btn btn-secondary" type="button" onclick="closeAdmin()">Fechar</button>
         <button class="btn btn-primary" type="button" onclick="saveAdmin()">Salvar alterações</button>
@@ -234,7 +192,6 @@
   </div>
 
   <div id="toast" class="toast"></div>
-
   <script src="app.js"></script>
 </body>
 </html>
