@@ -102,7 +102,7 @@ function renderPortal(data) {
   document.getElementById('updateDate').textContent = data.lastUpdate?.date || '--/--/----';
   document.getElementById('updateTime').textContent = data.lastUpdate?.time || '--:--';
   document.getElementById('headerUpdate').textContent = `${data.lastUpdate?.date || '--/--/----'} • ${data.lastUpdate?.time || '--:--'}`;
-  document.getElementById('pageSubtitle').textContent = data.appSubtitle || 'Consulta externa segura e visualização estratégica do relatório.';
+  document.getElementById('pageSubtitle').textContent = data.appSubtitle || 'Veja. Entenda. Decida.';
 
   renderProducts(data.recentProducts || []);
   updateReportButtons();
