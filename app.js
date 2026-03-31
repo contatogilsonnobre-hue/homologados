@@ -3,7 +3,7 @@ let clickCount = 0;
 let clickTimer = null;
 
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbxBsty6Fh4Rl9mYjeGirep8FtbaxHc5oAtwxvqLBEmYCzbUy1R0hp9ZExhR0VH8fUMZsQ/exec'
+  API_URL: 'https://script.google.com/macros/s/AKfycby-bOXC-mA21a7Oqq8ew0UDNseL2LuWExZiNPVw6R1oSd8kp3V-Dbp2e0qog3ASQqwVFw/exec'
 };
 
 const ADMIN_PASSWORD = 'admin123';
@@ -135,11 +135,11 @@ function updateReportButtons() {
   const hasUrl = !!(PORTAL_DATA?.report?.url && String(PORTAL_DATA.report.url).trim());
 
   if (hasUrl) {
-    hint.textContent = 'Relatório disponível para visualização e download.';
+    hint.textContent = 'Relatório Disponível para Visualização e Download.';
     viewBtn.classList.remove('btn-disabled');
     downloadBtn.classList.remove('btn-disabled');
   } else {
-    hint.textContent = 'Nenhum link de relatório configurado no momento.';
+    hint.textContent = 'Nenhum link de Relatório Configurado no Momento.';
     viewBtn.classList.add('btn-disabled');
     downloadBtn.classList.add('btn-disabled');
   }
@@ -147,7 +147,7 @@ function updateReportButtons() {
 
 function openReport() {
   if (!PORTAL_DATA?.report?.url) {
-    showToast('Nenhum PDF configurado.');
+    showToast('Nenhum PDF Disponível.');
     return;
   }
   window.open(PORTAL_DATA.report.url, '_blank');
@@ -155,7 +155,7 @@ function openReport() {
 
 function downloadReport() {
   if (!PORTAL_DATA?.report?.url) {
-    showToast('Nenhum PDF configurado.');
+    showToast('Nenhum PDF Disponível.');
     return;
   }
   window.open(PORTAL_DATA.report.url, '_blank');
@@ -220,7 +220,7 @@ function submitAdminAuth() {
   }
 
   if (password !== ADMIN_PASSWORD) {
-    showAdminAuthError('Senha administrativa inválida.');
+    showAdminAuthError('Senha Administrativa Inválida.');
     return;
   }
 
@@ -266,7 +266,7 @@ function saveAdmin() {
   localStorage.setItem('portalData', JSON.stringify(PORTAL_DATA));
   renderPortal(PORTAL_DATA);
   closeAdmin();
-  showToast('Alterações salvas com sucesso.');
+  showToast('Alterações salvas com Sucesso.');
 }
 
 function closeAdmin() {
