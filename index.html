@@ -2,32 +2,141 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portal Executivo Flex</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <div id="loginOverlay" class="login-overlay">
+    <div class="login-bg-glow"></div>
 
-<div id="login">
-  <h2>Portal Executivo</h2>
-  <input id="user" placeholder="Usuário"><br><br>
-  <input id="pass" type="password" placeholder="Senha"><br><br>
-  <button onclick="login()">Entrar</button>
-  <p id="error"></p>
-</div>
+    <div class="login-card" id="loginCard">
+      <div class="login-header">
+        <div class="login-logo-dot"></div>
+        <h1>Motorola</h1>
+        <p>
+          Login de Acesso | Consulta controlada do relatório geral para parceiros externos.
+        </p>
+      </div>
 
-<div id="app" style="display:none;">
-  <h1>Relatório Geral</h1>
+      <div class="login-form">
+        <div class="login-input-group">
+          <span class="login-input-icon">👤</span>
+          <input
+            type="text"
+            id="loginUser"
+            class="login-input"
+            placeholder="Digite seu usuário"
+            autocomplete="off"
+          >
+        </div>
 
-  <button onclick="openReport()">Visualizar Relatório</button>
+        <div class="login-input-group">
+          <span class="login-input-icon">🔑</span>
+          <input
+            type="password"
+            id="loginPassword"
+            class="login-input"
+            placeholder="Digite sua senha"
+            autocomplete="off"
+          >
+          <button
+            type="button"
+            class="toggle-password"
+            id="togglePasswordBtn"
+            aria-label="Mostrar senha"
+          >
+            👁
+          </button>
+        </div>
 
-  <h3>Última atualização</h3>
-  <p id="date"></p>
+        <div id="loginError" class="login-error"></div>
 
-  <h3>Novos produtos</h3>
-  <ul id="products"></ul>
-</div>
+        <button id="loginButton" class="login-button">
+          <span id="loginButtonText">Login</span>
+          <span id="loginSpinner" class="login-spinner"></span>
+        </button>
+      </div>
 
-<script src="app.js"></script>
+      <div class="login-footer">
+        <span>Ambiente Executivo • Acesso Restrito</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Motorola • Lenovo Company</div>
+        <h1 id="pageTitle">Portal Executivo | Relatório Geral</h1>
+        <p id="pageSubtitle">Consulta externa segura e visualização estratégica do relatório.</p>
+      </div>
+
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span id="headerUpdate">--/--/---- • --:--</span>
+      </div>
+    </header>
+
+    <main class="dashboard-grid">
+      <section class="panel panel-large">
+        <div class="panel-header">
+          <div>
+            <div class="panel-label">Relatório principal</div>
+            <h2 id="reportName">Relatório Geral</h2>
+          </div>
+          <div class="panel-chip">Executivo</div>
+        </div>
+
+        <p class="panel-text">
+          Visualização controlada do relatório oficial disponibilizado para consulta externa.
+        </p>
+
+        <div class="report-actions">
+          <button class="btn btn-primary" id="viewReportBtn">Visualizar</button>
+          <button class="btn btn-secondary" id="downloadReportBtn">Baixar</button>
+        </div>
+
+        <div id="reportHint" class="report-hint">
+          Nenhum link de relatório configurado no momento.
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-label">Atualização</div>
+            <h2>Última atualização</h2>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <span>Data</span>
+            <strong id="updateDate">--/--/----</strong>
+          </div>
+          <div class="info-card">
+            <span>Hora</span>
+            <strong id="updateTime">--:--</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel full-width">
+        <div class="panel-header">
+          <div>
+            <div class="panel-label">Novos produtos</div>
+            <h2>Últimos itens inseridos</h2>
+          </div>
+        </div>
+
+        <div id="recentProductsList" class="products-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
 </body>
 </html>
