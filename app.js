@@ -2,7 +2,7 @@ let PORTAL_DATA = null;
 let clickCount = 0;
 
 const CONFIG = {
-  API_URL: 'COLE_AQUI_SUA_API'
+  API_URL: 'https://script.google.com/macros/s/AKfycbzURBsi3CRDfAxBgxwgWWVWrKxcyvHCHzn5QtzpSvBZS7SbJGQFbBh66iMVc3GErB6xNQ/exec'
 };
 
 const ADMIN_PASSWORD = 'admin123';
