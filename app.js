@@ -1,7 +1,7 @@
 let PORTAL_DATA = null;
 
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbzxfbBd3-n9OeN5bxsQJ_RtcB1lHi3phx3Wrf2Ge2pxI-vSGgptk20QmgjEBIGJQHPYLQ/exec'
+  API_URL: 'https://script.google.com/macros/s/AKfycbzURBsi3CRDfAxBgxwgWWVWrKxcyvHCHzn5QtzpSvBZS7SbJGQFbBh66iMVc3GErB6xNQ/exec'
 };
 
 function initializeLoginScreen() {
