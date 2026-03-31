@@ -87,7 +87,7 @@ function validateLogin() {
       document.body.classList.remove('login-locked');
       document.getElementById('appShell').classList.remove('hidden');
       setLoginLoading(false);
-      showToast('Bem-vindo(a) ao portal executivo.');
+      showToast('Bem-vindo(a).');
     } else {
       setLoginLoading(false);
       showLoginError('Usuário ou senha inválidos.');
