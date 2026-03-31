@@ -291,21 +291,28 @@ function escapeHtml(value) {
 }
 
 function loadPortal() {
-  const saved = localStorage.getItem('portalData');
-  if (saved) {
-    try {
-      renderPortal(JSON.parse(saved));
-      return;
-    } catch {
-      localStorage.removeItem('portalData');
-    }
-  }
-
   fetch(CONFIG.API_URL)
     .then(res => res.text())
-    .then(text => renderPortal(JSON.parse(text)))
+    .then(text => {
+      const data = JSON.parse(text);
+      PORTAL_DATA = data;
+      localStorage.setItem('portalData', JSON.stringify(data));
+      renderPortal(data);
+    })
     .catch(err => {
       console.error(err);
+
+      const saved = localStorage.getItem('portalData');
+      if (saved) {
+        try {
+          renderPortal(JSON.parse(saved));
+          showToast('Exibindo dados salvos localmente.');
+          return;
+        } catch (e) {
+          localStorage.removeItem('portalData');
+        }
+      }
+
       showToast('Erro ao carregar a API.');
     });
 }
