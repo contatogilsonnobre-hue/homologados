@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal Executivo Flex</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="login">
+  <h2>Portal Executivo</h2>
+  <input id="user" placeholder="Usuário"><br><br>
+  <input id="pass" type="password" placeholder="Senha"><br><br>
+  <button onclick="login()">Entrar</button>
+  <p id="error"></p>
+</div>
+
+<div id="app" style="display:none;">
+  <h1>Relatório Geral</h1>
+
+  <button onclick="openReport()">Visualizar Relatório</button>
+
+  <h3>Última atualização</h3>
+  <p id="date"></p>
+
+  <h3>Novos produtos</h3>
+  <ul id="products"></ul>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
