@@ -1,5 +1,5 @@
 const CONFIG = {
-  API_URL: 'COLE_AQUI_SEU_LINK_DO_APPS_SCRIPT'
+  API_URL: 'https://script.google.com/macros/s/AKfycbyJQmzNu7OGYgXiZLVpAPi3lxoDOQvsVIoSGyfsTZalC14xR36V4p4w_eO1rLfwRTdobA/exec'
 };
 
 let DATA = null;
