@@ -26,20 +26,38 @@ function openReport(){
 
 function load(){
   fetch(CONFIG.API_URL)
-    .then(res => res.json())
-    .then(d => {
-      DATA = d;
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('HTTP ' + res.status);
+      }
+      return res.text();
+    })
+    .then(text => {
+      try {
+        const d = JSON.parse(text);
+        DATA = d;
 
-      document.getElementById('date').innerText =
-        d.lastUpdate.date + ' ' + d.lastUpdate.time;
+        document.getElementById('date').innerText =
+          d.lastUpdate.date + ' ' + d.lastUpdate.time;
 
-      const list = document.getElementById('products');
+        const list = document.getElementById('products');
+        list.innerHTML = '';
 
-      d.recentProducts.forEach(p=>{
-        const li = document.createElement('li');
-        li.innerText = p.modelo + ' - ' + p.categoria;
-        list.appendChild(li);
-      });
+        d.recentProducts.forEach(p => {
+          const li = document.createElement('li');
+          li.innerText = p.modelo + ' - ' + p.categoria;
+          list.appendChild(li);
+        });
+      } catch (e) {
+        console.error('Resposta recebida:', text);
+        alert('A API não retornou JSON válido.');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Erro ao conectar com API');
+    });
+}
 
     })
     .catch(() => {
